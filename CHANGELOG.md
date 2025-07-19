@@ -15,3 +15,10 @@
 - Currency formatting using `NumberFormat` for product prices
 - Guidelines in `ConstraintLayout` for layout alignment
 - Percentage-based dimensions for responsive UI scaling
+
+## [2.3]
+
+### Added
+- TextInputLayout to enhance EditText fields in product form
+- AlertDialog with support for title, message, and action buttons
+- Custom layouts for dialogs using `setView()`
