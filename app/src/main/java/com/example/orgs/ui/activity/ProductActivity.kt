@@ -2,7 +2,9 @@ package com.example.orgs.ui.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.orgs.R
 import com.example.orgs.dao.ProductsDAO
 import com.example.orgs.databinding.ActivityProductBinding
 import com.example.orgs.model.Product
@@ -18,6 +20,13 @@ class ProductActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
         confSaveButton()
+        binding.imgProduct.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setView(R.layout.imagem_form)
+                .setPositiveButton("Confirm") { _, _ -> }
+                .setNegativeButton("Cancel") { _, _ -> }
+                .show()
+        }
     }
 
     private fun confSaveButton() {
@@ -31,9 +40,9 @@ class ProductActivity : AppCompatActivity() {
     }
 
     private fun registerProduct(): Product {
-        val name = binding.edtName.text.toString()
-        val description = binding.edtDescription.text.toString()
-        val priceString = binding.edtPrice.text.toString()
+        val name = binding.tieName.text.toString()
+        val description = binding.tieDescription.text.toString()
+        val priceString = binding.tiePrice.text.toString()
         val price = if (priceString.isBlank()) BigDecimal.ZERO else BigDecimal(priceString)
 
         return Product(
