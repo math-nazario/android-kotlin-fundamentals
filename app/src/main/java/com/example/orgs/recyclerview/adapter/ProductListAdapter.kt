@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.orgs.databinding.ProductItemBinding
 import com.example.orgs.model.Product
+import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.Locale
 
 class ProductListAdapter(
     private val context: Context,
@@ -20,7 +23,12 @@ class ProductListAdapter(
         fun bind(product: Product) {
             binding.txtName.text = product.name
             binding.txtDescription.text = product.description
-            binding.txtPrice.text = product.value.toPlainString()
+            binding.txtPrice.text = formatBrazilianCurrency(product.value)
+        }
+
+        private fun formatBrazilianCurrency(value: BigDecimal): String {
+            val formatter = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
+            return formatter.format(value)
         }
     }
 
