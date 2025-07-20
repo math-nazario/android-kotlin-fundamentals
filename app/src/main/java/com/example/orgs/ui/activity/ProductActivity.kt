@@ -1,29 +1,53 @@
 package com.example.orgs.ui.activity
 
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.orgs.R
+import coil.ImageLoader
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
+import coil.load
 import com.example.orgs.dao.ProductsDAO
 import com.example.orgs.databinding.ActivityProductBinding
+import com.example.orgs.databinding.ImageFormBinding
 import com.example.orgs.model.Product
 import java.math.BigDecimal
 
 class ProductActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityProductBinding
+    private val binding by lazy {
+        ActivityProductBinding.inflate(layoutInflater)
+    }
+    private var url: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        enableEdgeToEdge()
         confSaveButton()
+
+        val imageLoader = ImageLoader.Builder(this)
+            .components {
+                if (SDK_INT >= 28) {
+                    add(ImageDecoderDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+            }
+            .build()
+
         binding.imgProduct.setOnClickListener {
+            val bindingImage = ImageFormBinding.inflate(layoutInflater)
+            bindingImage.btnLoadImage.setOnClickListener {
+                val url = bindingImage.tieURL.text.toString()
+                bindingImage.imgProductImageUploaded.load(url, imageLoader)
+            }
             AlertDialog.Builder(this)
-                .setView(R.layout.imagem_form)
-                .setPositiveButton("Confirm") { _, _ -> }
+                .setView(bindingImage.root)
+                .setPositiveButton("Confirm") { _, _ ->
+                    url = bindingImage.tieURL.text.toString()
+                    binding.imgProduct.load(url, imageLoader)
+                }
                 .setNegativeButton("Cancel") { _, _ -> }
                 .show()
         }
@@ -48,7 +72,8 @@ class ProductActivity : AppCompatActivity() {
         return Product(
             name = name,
             description = description,
-            value = price
+            value = price,
+            image = url
         )
     }
 }

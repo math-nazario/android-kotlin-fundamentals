@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.orgs.databinding.ProductItemBinding
 import com.example.orgs.model.Product
 import java.math.BigDecimal
@@ -24,6 +25,7 @@ class ProductListAdapter(
             binding.txtName.text = product.name
             binding.txtDescription.text = product.description
             binding.txtPrice.text = formatBrazilianCurrency(product.value)
+            binding.imageView.load(product.image)
         }
 
         private fun formatBrazilianCurrency(value: BigDecimal): String {
