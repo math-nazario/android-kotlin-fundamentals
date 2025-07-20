@@ -22,3 +22,12 @@
 - TextInputLayout to enhance EditText fields in product form
 - AlertDialog with support for title, message, and action buttons
 - Custom layouts for dialogs using `setView()`
+
+## [2.4]
+
+### Added
+- Coil library integration for image loading
+- Internet permission configured in `AndroidManifest.xml`
+- Image URL property added to the product model
+- Coil used in both product form and RecyclerView adapter
+- GIF support configured in Coil using a custom `ImageLoader`
