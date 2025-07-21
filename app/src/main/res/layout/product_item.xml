@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.3"
-            app:srcCompat="@drawable/img_test_product" />
+            app:srcCompat="@drawable/default_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

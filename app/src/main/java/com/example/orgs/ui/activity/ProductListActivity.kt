@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.orgs.dao.ProductsDAO
 import com.example.orgs.databinding.ActivityProductListBinding
-import com.example.orgs.recyclerview.adapter.ProductListAdapter
+import com.example.orgs.ui.adapter.ProductListAdapter
 
 class ProductListActivity : AppCompatActivity() {
 
