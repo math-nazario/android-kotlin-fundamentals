@@ -23,6 +23,21 @@ This application serves as an educational exercise to explore the fundamentals o
 - ViewBinding
 - RecyclerView
 
+## ✅ Features
+
+- Product registration form with image support
+- Product list with images and prices formatted as currency
+- Image loading with Coil (including GIFs)
+- Custom dialogs for image input
+- Input validation for required fields
+- Responsive layout using ConstraintLayout and Material Components
+- Themed app: colors, typography and custom app bar title
+
+## 🔜 Planned
+
+- Product details screen with shared element transition
+- Persist data with local storage or database
+
 ---
 
 📘 Educational purpose only. Not intended for commercial use.
