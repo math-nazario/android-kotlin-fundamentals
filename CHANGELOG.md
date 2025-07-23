@@ -31,3 +31,15 @@
 - Image URL property added to the product model
 - Coil used in both product form and RecyclerView adapter
 - GIF support configured in Coil using a custom `ImageLoader`
+
+## [2.5]
+
+### Added
+- Coil customization: placeholder, fallback and error handling
+- Delegation pattern to isolate dialog responsibilities
+- Support for high-order function listener in image dialog
+- Input validation for product fields in form
+- Theme customization: primary colors, fonts and app bar title
+
+### Planned
+- Product details screen (to be implemented)
