@@ -41,5 +41,15 @@
 - Input validation for product fields in form
 - Theme customization: primary colors, fonts and app bar title
 
-### Planned
-- Product details screen (to be implemented)
+## [2.6]
+
+### Added
+- Product details screen (`ProductDetailsActivity`)
+- Parcelable implementation using `@Parcelize`
+- Constant key for safe data transfer between Activities
+- Locale-aware BigDecimal extension using `Locale.forLanguageTag`
+
+### Changed
+- Image loading function now supports custom placeholder, error and fallback
+- Activity theme customized to hide ActionBar on details screen
+- Updated `getParcelableExtra()` to new API with backward compatibility
