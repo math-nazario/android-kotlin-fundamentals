@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/default_image" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilName"
+            android:id="@+id/tilNameProduct"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imgProduct">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tieName"
+                android:id="@+id/tieNameProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
@@ -41,17 +41,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDescription"
+            android:id="@+id/tilDescriptionProduct"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilName">
+            app:layout_constraintTop_toBottomOf="@+id/tilNameProduct">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tieDescription"
+                android:id="@+id/tieDescriptionProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
@@ -59,17 +59,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilPrice"
+            android:id="@+id/tilPriceProduct"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilDescription">
+            app:layout_constraintTop_toBottomOf="@+id/tilDescriptionProduct">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiePrice"
+                android:id="@+id/tiePriceProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Price"
@@ -77,7 +77,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnSaveProduct"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -85,7 +85,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tilPriceProduct"
             app:layout_constraintVertical_bias="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

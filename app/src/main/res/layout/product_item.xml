@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txtName"
+            android:id="@+id/txtNameItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -23,25 +23,25 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintStart_toEndOf="@id/imgDefault"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem/random" />
 
         <TextView
-            android:id="@+id/txtDescription"
+            android:id="@+id/txtDescriptionItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/montserrat"
             android:maxLines="1"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/txtName"
-            app:layout_constraintStart_toStartOf="@+id/txtName"
-            app:layout_constraintTop_toBottomOf="@+id/txtName"
+            app:layout_constraintEnd_toEndOf="@+id/txtNameItem"
+            app:layout_constraintStart_toStartOf="@+id/txtNameItem"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameItem"
             tools:text="@tools:sample/lorem/random" />
 
         <TextView
-            android:id="@+id/txtPrice"
+            android:id="@+id/txtPriceItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -51,18 +51,18 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txtName"
-            app:layout_constraintStart_toStartOf="@+id/txtName"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+            app:layout_constraintEnd_toEndOf="@+id/txtNameItem"
+            app:layout_constraintStart_toStartOf="@+id/txtNameItem"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescriptionItem"
             tools:text="R$ 19,90" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgDefault"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txtName"
+            app:layout_constraintEnd_toStartOf="@id/txtNameItem"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.3"

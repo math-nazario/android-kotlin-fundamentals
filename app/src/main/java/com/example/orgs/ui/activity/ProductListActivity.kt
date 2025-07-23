@@ -27,7 +27,7 @@ class ProductListActivity : AppCompatActivity() {
     }
 
     private fun configFab() {
-        val fabAdd = binding.fabAdd
+        val fabAdd = binding.fabAddProduct
         fabAdd.setOnClickListener {
             goToProductActivity()
         }
@@ -36,6 +36,12 @@ class ProductListActivity : AppCompatActivity() {
     private fun configRecyclerView() {
         val recyclerView = binding.rvProducts
         recyclerView.adapter = adapter
+        adapter.clickItem = {
+            val intent = Intent(this, ProductDetailsActivity::class.java).apply {
+                putExtra(PRODUCT_KEY, it)
+            }
+            startActivity(intent)
+        }
     }
 
     private fun goToProductActivity() {

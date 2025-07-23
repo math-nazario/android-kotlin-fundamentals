@@ -21,12 +21,17 @@ fun createImageLoader(context: Context): ImageLoader {
         .build()
 }
 
-fun ImageView.tryToLoadImage(url: String? = null) {
+fun ImageView.tryToLoadImage(
+    url: String? = null,
+    fallback: Int = R.drawable.default_image,
+    error: Int = R.drawable.error,
+    placeholder: Int = R.drawable.loading
+) {
     val imageLoader = createImageLoader(context)
     load(url, imageLoader) {
-        fallback(R.drawable.error)
-        error(R.drawable.error)
-        placeholder(R.drawable.loading)
+        fallback(fallback)
+        error(error)
+        placeholder(placeholder)
         crossfade(true)
     }
 }

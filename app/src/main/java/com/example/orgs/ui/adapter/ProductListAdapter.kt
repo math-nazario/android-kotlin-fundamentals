@@ -6,40 +6,45 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.orgs.databinding.ProductItemBinding
+import com.example.orgs.extensions.formatBrazilianCurrency
 import com.example.orgs.extensions.tryToLoadImage
 import com.example.orgs.model.Product
-import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.Locale
 
 class ProductListAdapter(
     private val context: Context,
-    products: List<Product>
+    products: List<Product>, var clickItem: (product: Product) -> Unit = {}
 ) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     private val products = products.toMutableList()
 
-    class ViewHolder(private val binding: ProductItemBinding) :
+    inner class ViewHolder(private val binding: ProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private lateinit var product: Product
+
+        init {
+            itemView.setOnClickListener {
+                if (::product.isInitialized) {
+                    clickItem(product)
+                }
+            }
+        }
+
         fun bind(product: Product) {
-            binding.txtName.text = product.name
-            binding.txtDescription.text = product.description
-            binding.txtPrice.text = formatBrazilianCurrency(product.value)
+            this.product = product
+            binding.txtNameItem.text = product.name
+            binding.txtDescriptionItem.text = product.description
+            binding.txtPriceItem.text = product.value.formatBrazilianCurrency()
 
             val visibilityImage = if (product.image != null) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
-            binding.imageView.visibility = visibilityImage
+            binding.imgDefault.visibility = visibilityImage
 
-            binding.imageView.tryToLoadImage(product.image)
-        }
-
-        private fun formatBrazilianCurrency(value: BigDecimal): String {
-            val formatter = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
-            return formatter.format(value)
+            binding.imgDefault.tryToLoadImage(product.image)
         }
     }
 

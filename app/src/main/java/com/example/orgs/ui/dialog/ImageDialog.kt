@@ -15,17 +15,17 @@ class ImageDialog(private val context: Context) {
 
             defaultURL?.let {
                 imgProductImageUploaded.tryToLoadImage(it)
-                tieURL.setText(it)
+                tieURLImage.setText(it)
             }
 
             btnLoadImage.setOnClickListener {
-                val url = tieURL.text.toString()
+                val url = tieURLImage.text.toString()
                 imgProductImageUploaded.tryToLoadImage(url)
             }
             AlertDialog.Builder(context)
                 .setView(root)
                 .setPositiveButton("Confirm") { _, _ ->
-                    val url = tieURL.text.toString()
+                    val url = tieURLImage.text.toString()
                     whenImageLoaded(url)
                 }
                 .setNegativeButton("Cancel") { _, _ -> }

@@ -32,7 +32,7 @@ class ProductActivity : AppCompatActivity() {
     }
 
     private fun confSaveButton() {
-        val btnSave = binding.btnSave
+        val btnSave = binding.btnSaveProduct
         val dao = ProductsDAO()
         btnSave.setOnClickListener {
             val product = registerProduct()
@@ -44,9 +44,9 @@ class ProductActivity : AppCompatActivity() {
     }
 
     private fun registerProduct(): Product? {
-        val name = binding.tieName.text.toString()
-        val description = binding.tieDescription.text.toString()
-        val priceString = binding.tiePrice.text.toString()
+        val name = binding.tieNameProduct.text.toString()
+        val description = binding.tieDescriptionProduct.text.toString()
+        val priceString = binding.tiePriceProduct.text.toString()
         val price = if (priceString.isBlank()) BigDecimal.ZERO else BigDecimal(priceString)
 
         if (name.isBlank() || description.isBlank() || price.compareTo(BigDecimal.ZERO) == 0) {
