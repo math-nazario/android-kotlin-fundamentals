@@ -1,4 +1,5 @@
 # android-kotlin-fundamentals
+![Version](https://img.shields.io/badge/version-v1.1.0-green)
 
 This project was developed as part of the **Android com Kotlin: criando um app** course by Alura.
 
