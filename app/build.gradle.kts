@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -54,4 +55,6 @@ dependencies {
 
     implementation(libs.coil)
     implementation(libs.coil.kt.coil.gif)
+    implementation(libs.androidx.room.runtime)
+    (libs.androidx.room.compiler.v250)
 }
