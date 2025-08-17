@@ -15,6 +15,7 @@ This application serves as an educational exercise to explore the fundamentals o
 - Data management using the DAO (Data Access Object) pattern
 - ViewBinding for safer access to views
 - Navigation between screens and data persistence in memory
+- Local data persistence with **Room Database**
 
 ## 🚀 Technologies
 
@@ -23,6 +24,9 @@ This application serves as an educational exercise to explore the fundamentals o
 - Android SDK
 - ViewBinding
 - RecyclerView
+- Coil
+- Material Components
+- Room (SQLite abstraction library)
 
 ## ✅ Features
 
@@ -33,11 +37,8 @@ This application serves as an educational exercise to explore the fundamentals o
 - Input validation for required fields
 - Responsive layout using ConstraintLayout and Material Components
 - Themed app: colors, typography and custom app bar title
-
-## 🔜 Planned
-
-- Product details screen with shared element transition
-- Persist data with local storage or database
+- Product details screen with Parcelable support
+- Persistent product storage using Room (entity, DAO, database, converters) 
 
 ---
 
