@@ -3,7 +3,7 @@ package com.example.orgs.ui.activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.orgs.dao.ProductsDAO
+import com.example.orgs.database.AppDatabase
 import com.example.orgs.databinding.ActivityProductBinding
 import com.example.orgs.extensions.tryToLoadImage
 import com.example.orgs.model.Product
@@ -33,11 +33,12 @@ class ProductActivity : AppCompatActivity() {
 
     private fun confSaveButton() {
         val btnSave = binding.btnSaveProduct
-        val dao = ProductsDAO()
+        val db = AppDatabase.instance(this)
+        val productDao = db.productDao()
         btnSave.setOnClickListener {
             val product = registerProduct()
             if (product != null) {
-                dao.add(product)
+                productDao.add(product)
                 finish()
             }
         }

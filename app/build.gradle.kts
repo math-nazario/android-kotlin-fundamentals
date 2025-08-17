@@ -48,13 +48,13 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(libs.androidx.recyclerview)
     implementation(libs.coil)
     implementation(libs.coil.kt.coil.gif)
     implementation(libs.androidx.room.runtime)
-    (libs.androidx.room.compiler.v250)
+    ksp(libs.androidx.room.compiler)
 }

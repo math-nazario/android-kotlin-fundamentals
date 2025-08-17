@@ -3,14 +3,13 @@ package com.example.orgs.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.orgs.dao.ProductsDAO
+import com.example.orgs.database.AppDatabase
 import com.example.orgs.databinding.ActivityProductListBinding
 import com.example.orgs.ui.adapter.ProductListAdapter
 
 class ProductListActivity : AppCompatActivity() {
 
-    private val dao = ProductsDAO()
-    private val adapter = ProductListAdapter(this, dao.getAll())
+    private val adapter = ProductListAdapter(this)
     private lateinit var binding: ActivityProductListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +22,9 @@ class ProductListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        adapter.update(dao.getAll())
+        val db = AppDatabase.instance(this)
+        val productDao = db.productDao()
+        adapter.update(productDao.getAll())
     }
 
     private fun configFab() {
