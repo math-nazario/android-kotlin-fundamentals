@@ -65,3 +65,16 @@
 
 ### Changed
 - Product data is now persisted in SQLite via Room instead of in-memory storage
+
+## [3.2]
+
+### Added
+- Database instance creation with `Room.databaseBuilder()`
+- Support for inserting and retrieving products directly from Room
+- Integration of Room with app flow (form and product list now use persisted data)
+- Database debugging with Android Studio App Inspector
+
+### Changed
+- Removed in-memory DAO implementation in favor of Room persistence
+- Room configured to allow main thread queries for didactic purposes
+- Schema generation warning suppressed by configuring schema location or disabling schema export
