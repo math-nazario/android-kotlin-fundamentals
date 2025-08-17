@@ -53,3 +53,28 @@
 - Image loading function now supports custom placeholder, error and fallback
 - Activity theme customized to hide ActionBar on details screen
 - Updated `getParcelableExtra()` to new API with backward compatibility
+
+## [3.1]
+
+### Added
+- Room persistence setup with entity `ProductEntity`
+- DAO interface with insert and query methods
+- Database configuration using `@Database` annotation
+- Type converters for complex data types
+- Query autocompletion and syntax highlighting in Android Studio
+
+### Changed
+- Product data is now persisted in SQLite via Room instead of in-memory storage
+
+## [3.2]
+
+### Added
+- Database instance creation with `Room.databaseBuilder()`
+- Support for inserting and retrieving products directly from Room
+- Integration of Room with app flow (form and product list now use persisted data)
+- Database debugging with Android Studio App Inspector
+
+### Changed
+- Removed in-memory DAO implementation in favor of Room persistence
+- Room configured to allow main thread queries for didactic purposes
+- Schema generation warning suppressed by configuring schema location or disabling schema export
