@@ -16,6 +16,7 @@ This application serves as an educational exercise to explore the fundamentals o
 - ViewBinding for safer access to views
 - Navigation between screens and data persistence in memory
 - Local data persistence with **Room Database**
+- UI enhancements with options and popup menus
 
 ## 🚀 Technologies
 
@@ -40,6 +41,8 @@ This application serves as an educational exercise to explore the fundamentals o
 - Product details screen with Parcelable support
 - Persistent product storage using Room (entity, DAO, database, converters)
 - Product form and product list fully integrated with Room persistence
+- Options menu with actions available in the product list
+- Popup menu support for product item selection
 
 ---
 
