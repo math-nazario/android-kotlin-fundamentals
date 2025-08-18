@@ -43,6 +43,10 @@ class ProductListActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+        adapter.whenClickDelete = {}
+
+        adapter.whenClickEdit = {}
     }
 
     private fun goToProductActivity() {

@@ -2,7 +2,10 @@ package com.example.orgs.ui.activity
 
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.orgs.R
 import com.example.orgs.databinding.ActivityProductDetailsBinding
 import com.example.orgs.extensions.formatBrazilianCurrency
 import com.example.orgs.extensions.tryToLoadImage
@@ -18,6 +21,24 @@ class ProductDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         tryToLoadProduct()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_product_details, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.mnDeleteProduct -> {
+
+            }
+
+            R.id.mnEditProduct -> {
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun tryToLoadProduct() {
