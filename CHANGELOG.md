@@ -78,3 +78,11 @@
 - Removed in-memory DAO implementation in favor of Room persistence
 - Room configured to allow main thread queries for didactic purposes
 - Schema generation warning suppressed by configuring schema location or disabling schema export
+
+## [3.3]
+
+### Added
+- Options menu implementation in `Activity` using XML and menu inflater
+- Support for menu items with titles and icons
+- Listener handling for menu item clicks
+- Popup menu implementation on product item selection
