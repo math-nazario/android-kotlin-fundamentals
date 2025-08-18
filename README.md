@@ -38,7 +38,8 @@ This application serves as an educational exercise to explore the fundamentals o
 - Responsive layout using ConstraintLayout and Material Components
 - Themed app: colors, typography and custom app bar title
 - Product details screen with Parcelable support
-- Persistent product storage using Room (entity, DAO, database, converters) 
+- Persistent product storage using Room (entity, DAO, database, converters)
+- Product form and product list fully integrated with Room persistence
 
 ---
 
