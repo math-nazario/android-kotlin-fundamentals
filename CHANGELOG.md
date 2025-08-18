@@ -86,3 +86,10 @@
 - Support for menu items with titles and icons
 - Listener handling for menu item clicks
 - Popup menu implementation on product item selection
+
+## [3.4]
+
+### Added
+- Added support for updating and deleting products with `@Update` and `@Delete` annotations in DAO  
+- Reused the Product Form Activity to handle both creating and editing products  
+- Enabled sending and receiving Product objects between Activities using `putExtra()` and `getParcelableExtra()`  
