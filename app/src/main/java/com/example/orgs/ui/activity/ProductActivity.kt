@@ -16,6 +16,7 @@ class ProductActivity : AppCompatActivity() {
         ActivityProductBinding.inflate(layoutInflater)
     }
     private var url: String? = null
+    private var idProduct = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,17 @@ class ProductActivity : AppCompatActivity() {
                 binding.imgProduct.tryToLoadImage(url)
             }
         }
+        intent.getParcelableExtra<Product>(PRODUCT_KEY)?.let { loadedProduct ->
+            title = "Edit Product"
+            idProduct = loadedProduct.id
+            url = loadedProduct.image
+            with(binding) {
+                imgProduct.tryToLoadImage(loadedProduct.image)
+                tieNameProduct.setText(loadedProduct.name)
+                tieDescriptionProduct.setText(loadedProduct.description)
+                tiePriceProduct.setText(loadedProduct.value.toPlainString())
+            }
+        }
     }
 
     private fun confSaveButton() {
@@ -38,7 +50,12 @@ class ProductActivity : AppCompatActivity() {
         btnSave.setOnClickListener {
             val product = registerProduct()
             if (product != null) {
-                productDao.add(product)
+                if (idProduct > 0) {
+                    productDao.update(product)
+                } else {
+                    productDao.add(product)
+
+                }
                 finish()
             }
         }
@@ -56,6 +73,7 @@ class ProductActivity : AppCompatActivity() {
         }
 
         return Product(
+            id = idProduct,
             name = name,
             description = description,
             value = price,

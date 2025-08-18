@@ -1,11 +1,13 @@
 package com.example.orgs.ui.activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.orgs.R
+import com.example.orgs.database.AppDatabase
 import com.example.orgs.databinding.ActivityProductDetailsBinding
 import com.example.orgs.extensions.formatBrazilianCurrency
 import com.example.orgs.extensions.tryToLoadImage
@@ -13,6 +15,7 @@ import com.example.orgs.model.Product
 
 class ProductDetailsActivity : AppCompatActivity() {
 
+    private lateinit var product: Product
     private val binding by lazy {
         ActivityProductDetailsBinding.inflate(layoutInflater)
     }
@@ -29,13 +32,22 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.mnDeleteProduct -> {
+        if (::product.isInitialized) {
+            val db = AppDatabase.instance(this)
+            val productDao = db.productDao()
 
-            }
+            when (item.itemId) {
+                R.id.mnDeleteProduct -> {
+                    productDao.delete(product)
+                    finish()
+                }
 
-            R.id.mnEditProduct -> {
-
+                R.id.mnEditProduct -> {
+                    Intent(this, ProductActivity::class.java).apply {
+                        putExtra(PRODUCT_KEY, product)
+                        startActivity(this)
+                    }
+                }
             }
         }
         return super.onOptionsItemSelected(item)
@@ -49,6 +61,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             intent.getParcelableExtra(PRODUCT_KEY)
         }
         product?.let {
+            this.product = it
             fillFields(it)
         } ?: finish()
     }
