@@ -92,4 +92,17 @@
 ### Added
 - Added support for updating and deleting products with `@Update` and `@Delete` annotations in DAO  
 - Reused the Product Form Activity to handle both creating and editing products  
-- Enabled sending and receiving Product objects between Activities using `putExtra()` and `getParcelableExtra()`  
+- Enabled sending and receiving Product objects between Activities using `putExtra()` and `getParcelableExtra()`
+
+## [3.5]
+
+### Added
+- Integration with Room for product persistence
+- Query products with filters using `WHERE` clause
+- Update and save products with `@Insert` and conflict strategy
+- Sorting menu on product list
+
+### Changed
+- Refactored code for better readability (method extractions, use of product id instead of passing full object)
+- Converted DAO initialization to property with `lazy` to avoid onCreate dependencies
+- Updated UX: removed popup menu from product list cards, keeping edit/delete options only in product details
