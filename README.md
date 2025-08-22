@@ -1,5 +1,5 @@
 # android-kotlin-fundamentals
-![Version](https://img.shields.io/badge/version-v1.1.0-green)
+![Version](https://img.shields.io/badge/version-v1.2.0-green)
 
 This project was developed as part of the **Android com Kotlin: criando um app** course by Alura.
 
@@ -12,11 +12,12 @@ This application serves as an educational exercise to explore the fundamentals o
 - Layout creation using XML
 - UI components: `TextView`, `EditText`, `Button`, etc.
 - List rendering with `RecyclerView` and custom `Adapter`
-- Data management using the DAO (Data Access Object) pattern
 - ViewBinding for safer access to views
 - Navigation between screens and data persistence in memory
-- Local data persistence with **Room Database**
-- UI enhancements with options and popup menus
+- Local data persistence with **Room Database** (DAO, entities, queries, converters)
+- Product management with create, update, and delete flows
+- Sorting and filtering options for the product list
+- UX improvements with Material Design components
 
 ## 🚀 Technologies
 
@@ -41,9 +42,9 @@ This application serves as an educational exercise to explore the fundamentals o
 - Product details screen with Parcelable support
 - Persistent product storage using Room (entity, DAO, database, converters)
 - Product form and product list fully integrated with Room persistence
-- Options menu with actions available in the product list
-- Popup menu support for product item selection
-- Update and delete products using Room
+- Sorting menu to organize products by criteria (challenge implementation)
+- Update and delete products directly from the product details screen  
+  *(popup menu previously available in the product list was removed for a clearer UX)*
 - Reused form Activity for both create and edit flows
 
 ---
