@@ -43,6 +43,8 @@ This application serves as an educational exercise to explore the fundamentals o
 - Product form and product list fully integrated with Room persistence
 - Options menu with actions available in the product list
 - Popup menu support for product item selection
+- Update and delete products using Room
+- Reused form Activity for both create and edit flows
 
 ---
 
