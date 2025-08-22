@@ -1,7 +1,6 @@
 package com.example.orgs.ui.activity
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -15,9 +14,14 @@ import com.example.orgs.model.Product
 
 class ProductDetailsActivity : AppCompatActivity() {
 
-    private lateinit var product: Product
+    private var productId: Long = 0L
+    private var product: Product? = null
     private val binding by lazy {
         ActivityProductDetailsBinding.inflate(layoutInflater)
+    }
+
+    private val productDao by lazy {
+        AppDatabase.instance(this).productDao()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,27 +30,34 @@ class ProductDetailsActivity : AppCompatActivity() {
         tryToLoadProduct()
     }
 
+    override fun onResume() {
+        super.onResume()
+        productSearch()
+    }
+
+    private fun productSearch() {
+        product = productDao.getById(productId)
+        product?.let {
+            fillFields(it)
+        } ?: finish()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_product_details, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (::product.isInitialized) {
-            val db = AppDatabase.instance(this)
-            val productDao = db.productDao()
+        when (item.itemId) {
+            R.id.mnDeleteProduct -> {
+                product?.let { productDao.delete(it) }
+                finish()
+            }
 
-            when (item.itemId) {
-                R.id.mnDeleteProduct -> {
-                    productDao.delete(product)
-                    finish()
-                }
-
-                R.id.mnEditProduct -> {
-                    Intent(this, ProductActivity::class.java).apply {
-                        putExtra(PRODUCT_KEY, product)
-                        startActivity(this)
-                    }
+            R.id.mnEditProduct -> {
+                Intent(this, ProductActivity::class.java).apply {
+                    putExtra(PRODUCT_KEY_ID, productId)
+                    startActivity(this)
                 }
             }
         }
@@ -54,16 +65,7 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     private fun tryToLoadProduct() {
-        val product = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(PRODUCT_KEY, Product::class.java)
-        } else {
-            @Suppress("DEPRECATION")
-            intent.getParcelableExtra(PRODUCT_KEY)
-        }
-        product?.let {
-            this.product = it
-            fillFields(it)
-        } ?: finish()
+        productId = intent.getLongExtra(PRODUCT_KEY_ID, 0L)
     }
 
     private fun fillFields(product: Product) {

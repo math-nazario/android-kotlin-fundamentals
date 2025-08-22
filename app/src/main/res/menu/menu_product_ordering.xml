@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mnOrderingProduct"
+        android:icon="@drawable/ic_action_sort"
+        android:title="Sort"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/mnNameAsc"
+                android:title="Name asc" />
+
+            <item
+                android:id="@+id/mnNameDesc"
+                android:title="Name desc" />
+
+            <item
+                android:id="@+id/mnDescriptionAsc"
+                android:title="Description asc" />
+
+            <item
+                android:id="@+id/mnDescriptionDesc"
+                android:title="Description desc" />
+
+            <item
+                android:id="@+id/mnPriceAsc"
+                android:title="Price asc" />
+
+            <item
+                android:id="@+id/mnPriceDesc"
+                android:title="Price desc" />
+
+            <item
+                android:id="@+id/mnWithoutOrdering"
+                android:title="No ordering" />
+        </menu>
+    </item>
+</menu>

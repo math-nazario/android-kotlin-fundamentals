@@ -4,9 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
-import com.example.orgs.R
 import com.example.orgs.databinding.ProductItemBinding
 import com.example.orgs.extensions.formatBrazilianCurrency
 import com.example.orgs.extensions.tryToLoadImage
@@ -16,8 +14,6 @@ class ProductListAdapter(
     private val context: Context,
     products: List<Product> = emptyList(),
     var clickItem: (product: Product) -> Unit = {},
-    var whenClickDelete: (product: Product) -> Unit = {},
-    var whenClickEdit: (product: Product) -> Unit = {}
 ) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
@@ -25,8 +21,6 @@ class ProductListAdapter(
 
     inner class ViewHolder(
         private val binding: ProductItemBinding,
-        private val whenClickDelete: (product: Product) -> Unit,
-        private val whenClickEdit: (product: Product) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -37,13 +31,6 @@ class ProductListAdapter(
                 if (::product.isInitialized) {
                     clickItem(product)
                 }
-            }
-
-            itemView.setOnLongClickListener {
-                if (::product.isInitialized) {
-                    showPopupMenu(it)
-                }
-                true
             }
         }
 
@@ -59,30 +46,7 @@ class ProductListAdapter(
                 View.GONE
             }
             binding.imgDefault.visibility = visibilityImage
-
             binding.imgDefault.tryToLoadImage(product.image)
-        }
-
-        private fun showPopupMenu(view: View) {
-            val popupMenu = PopupMenu(context, view)
-            popupMenu.menuInflater.inflate(R.menu.menu_product_details, popupMenu.menu)
-
-            popupMenu.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.mnDeleteProduct -> {
-                        whenClickDelete(product)
-                        true
-                    }
-
-                    R.id.mnEditProduct -> {
-                        whenClickEdit(product)
-                        true
-                    }
-
-                    else -> false
-                }
-            }
-            popupMenu.show()
         }
     }
 
@@ -92,7 +56,7 @@ class ProductListAdapter(
     ): ViewHolder {
         val inflater = LayoutInflater.from(context)
         val binding = ProductItemBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, whenClickDelete, whenClickEdit)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

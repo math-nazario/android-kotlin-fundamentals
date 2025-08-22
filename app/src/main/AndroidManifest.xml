@@ -16,7 +16,6 @@
         <activity
             android:name=".ui.activity.ProductDetailsActivity"
             android:exported="false" />
-        <!--            android:theme="@style/Theme.Orgs.NoActionBar" />-->
         <activity
             android:name=".ui.activity.ProductActivity"
             android:exported="false" />

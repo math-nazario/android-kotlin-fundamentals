@@ -15,8 +15,12 @@ class ProductActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityProductBinding.inflate(layoutInflater)
     }
+
     private var url: String? = null
-    private var idProduct = 0L
+    private var productId = 0L
+    private val productDao by lazy {
+        AppDatabase.instance(this).productDao()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,32 +34,37 @@ class ProductActivity : AppCompatActivity() {
                 binding.imgProduct.tryToLoadImage(url)
             }
         }
-        intent.getParcelableExtra<Product>(PRODUCT_KEY)?.let { loadedProduct ->
-            title = "Edit Product"
-            idProduct = loadedProduct.id
-            url = loadedProduct.image
-            with(binding) {
-                imgProduct.tryToLoadImage(loadedProduct.image)
-                tieNameProduct.setText(loadedProduct.name)
-                tieDescriptionProduct.setText(loadedProduct.description)
-                tiePriceProduct.setText(loadedProduct.value.toPlainString())
-            }
+        tryToLoadProduct()
+    }
+
+    private fun tryToLoadProduct() {
+        productId = intent.getLongExtra(PRODUCT_KEY_ID, 0L)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        productDao.getById(productId)?.let {
+            fillFields(it)
+        }
+    }
+
+    private fun fillFields(product: Product) {
+        title = "Edit Product"
+        url = product.image
+        with(binding) {
+            imgProduct.tryToLoadImage(product.image)
+            tieNameProduct.setText(product.name)
+            tieDescriptionProduct.setText(product.description)
+            tiePriceProduct.setText(product.value.toPlainString())
         }
     }
 
     private fun confSaveButton() {
         val btnSave = binding.btnSaveProduct
-        val db = AppDatabase.instance(this)
-        val productDao = db.productDao()
         btnSave.setOnClickListener {
             val product = registerProduct()
             if (product != null) {
-                if (idProduct > 0) {
-                    productDao.update(product)
-                } else {
-                    productDao.add(product)
-
-                }
+                productDao.add(product)
                 finish()
             }
         }
@@ -73,7 +82,7 @@ class ProductActivity : AppCompatActivity() {
         }
 
         return Product(
-            id = idProduct,
+            id = productId,
             name = name,
             description = description,
             value = price,
